@@ -1,86 +1,98 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from 'next';
+import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
+  const [share, setShare] = useState(false);
+
+  let currentLocation: string;
+  useEffect(() => {
+    currentLocation = window.location.href;
+  });
+
+  const onShare = () => {
+    const clipboard = navigator.clipboard.writeText(currentLocation);
+    clipboard
+      .then(() => {
+        setShare(true);
+      })
+      .then(() => {
+        setTimeout(() => {
+          setShare(false);
+        }, 2000);
+      });
+  };
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className='flex min-h-screen flex-col items-center justify-center py-2'>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Tem</title>
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <main className='flex w-full flex-1 flex-col items-center justify-center'>
+        <div className='space-y-4'>
+          {/* avatar */}
+          <div className='flex space-x-2 justify-between items-center w-full'>
+            <Image
+              src='/IMG_3823.jpg'
+              alt='avatar'
+              width={75}
+              height={75}
+              className='rounded-full
+                justify-center items-center flex
+                '
+            />
+            <button
+              className={`
+                ${
+                  share
+                    ? `bg-blue-300 ring-blue-500 focus:ring-2 font-semibold`
+                    : `bg-blue-200 font-semibold`
+                }               text-xs py-1 px-2 rounded-lg`}
+              onClick={onShare}
+            >
+              {share ? 'URL Copied!' : 'Copy URL'}
+            </button>
+          </div>
+          <div className='border-2 border-violet-400 p-4 rounded-lg space-y-2'>
+            {/* intro */}
+            <div className='space-y-1'>
+              <div className='flex'>
+                <h1 className='font-bold text-2xl flex'>Hi, I'm Tem! 👋</h1>
+              </div>
+              <p className='text-md font-light'>
+                I'm curious about tech and how it works.
+              </p>
+            </div>
+            <hr />
+            {/* socials */}
+            <div className='space-y-1'>
+              <div className='flex'>
+                <h1 className='font-semibold text-xl flex'>Socials 🚀</h1>
+              </div>
+              <div className='gap-1 items-center'>
+                <div className='overflow-x-auto flex gap-2 items-center'>
+                  <div className='flex justify-center text-sm bg-orange-400 hover:bg-orange-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
+                    <Link href='https://www.tiktok.com/@tem.io'>TikTok</Link>
+                  </div>
+                  <div className='flex justify-center text-sm bg-blue-400 hover:bg-blue-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
+                    <Link href='https://tembee.vercel.app/'>Blog</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* content */}
+            <div className='space-y-1'>
+              <div></div>
+            </div>
+          </div>
         </div>
       </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

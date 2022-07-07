@@ -43,7 +43,6 @@ const Home: NextPage = () => {
               alt='avatar'
               width={75}
               height={75}
-              loading='lazy'
               className='rounded-full
                 justify-center items-center flex
                 '

@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Tools from '../components/tools.component';
 
 const Home: NextPage = () => {
   const [share, setShare] = useState(false);
+  const [showTools, setShowTools] = useState(false);
 
   let currentLocation: string;
   useEffect(() => {
@@ -26,13 +28,13 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className='flex min-h-screen flex-col items-center justify-center py-2'>
+    <div className='flex py-8 min-h-screen overflow-auto flex-col items-center justify-center'>
       <Head>
         <title>Tem</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='flex w-full flex-1 flex-col items-center justify-center'>
+      <main className='flex w-full flex-1 justify-center'>
         <div className='space-y-4'>
           {/* avatar */}
           <div className='flex space-x-2 justify-between items-center w-full'>
@@ -57,7 +59,7 @@ const Home: NextPage = () => {
               {share ? 'URL Copied!' : 'Copy URL'}
             </button>
           </div>
-          <div className='border-2 border-violet-400 p-4 rounded-lg space-y-2'>
+          <div className='space-y-2'>
             {/* intro */}
             <div className='space-y-1'>
               <div className='flex'>
@@ -69,24 +71,36 @@ const Home: NextPage = () => {
             </div>
             <hr />
             {/* socials */}
-            <div className='space-y-1'>
+            <div className='space-y-1 border-2 border-violet-400 p-4 rounded-lg'>
               <div className='flex'>
-                <h1 className='font-semibold text-xl flex'>Socials 🚀</h1>
+                <h1 className='font-semibold text-2xl flex'>Socials 🚀</h1>
               </div>
               <div className='gap-1 items-center'>
                 <div className='overflow-x-auto flex gap-2 items-center'>
-                  <div className='flex justify-center text-sm bg-orange-400 hover:bg-orange-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
+                  <div className='flex justify-center bg-violet-400 hover:bg-violet-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
                     <Link href='https://www.tiktok.com/@tem.io'>TikTok</Link>
                   </div>
-                  <div className='flex justify-center text-sm bg-blue-400 hover:bg-blue-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
+                  <div className='flex justify-center bg-violet-400 hover:bg-violet-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
                     <Link href='https://tembee.vercel.app/'>Blog</Link>
                   </div>
                 </div>
               </div>
             </div>
             {/* content */}
-            <div className='space-y-1'>
-              <div></div>
+            <div className='space-y-1 border-2 border-blue-400 p-4 rounded-lg'>
+              <div className='flex'>
+                <h1 className='font-semibold text-2xl flex'>From TikTok ⚙️</h1>
+              </div>
+              <div className='gap-1 space-y-1 items-center grid'>
+                <button
+                  onClick={() => setShowTools(!showTools)}
+                  className='mx-auto bg-blue-400 hover:bg-blue-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'
+                >
+                  {showTools ? 'Hide' : 'Show'} Tools
+                </button>
+
+                <div>{showTools && <Tools />}</div>
+              </div>
             </div>
           </div>
         </div>

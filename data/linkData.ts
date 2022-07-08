@@ -11,34 +11,4 @@ export const links = [
     link: 'https://www.copy.ai/?via=tembee',
     linkText: 'CopyAI',
   },
-  {
-    id: '2',
-    link: 'https://www.copy.ai/?via=tembee',
-    linkText: 'CopyAI',
-  },
-  {
-    id: '2',
-    link: 'https://www.copy.ai/?via=tembee',
-    linkText: 'CopyAI',
-  },
-  {
-    id: '2',
-    link: 'https://www.copy.ai/?via=tembee',
-    linkText: 'CopyAI',
-  },
-  {
-    id: '2',
-    link: 'https://www.copy.ai/?via=tembee',
-    linkText: 'CopyAI',
-  },
-  {
-    id: '2',
-    link: 'https://www.copy.ai/?via=tembee',
-    linkText: 'CopyAI',
-  },
-  {
-    id: '2',
-    link: 'https://www.copy.ai/?via=tembee',
-    linkText: 'CopyAI',
-  },
 ];

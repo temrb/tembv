@@ -12,12 +12,12 @@ import { user } from '../data/userData';
 
 const Home: NextPage = () => {
   const [share, setShare] = useState(false);
-
+  const [showTools, setShowTools] = useState(false);
+  
   let currentLocation: string;
   useEffect(() => {
     currentLocation = window.location.href;
   });
-
   const onShare = () => {
     const clipboard = navigator.clipboard.writeText(currentLocation);
     clipboard
@@ -64,7 +64,6 @@ const Home: NextPage = () => {
           <div className='space-y-4'>
             {/* heading */}
             <Heading title={` ${user.title}`} subTitle={` ${user.subTitle}`} />
-
             {/* socials */}
             {user.socialSection && (
               <Section title='Socials 🚀' borderColor='border-violet-400'>
@@ -82,7 +81,6 @@ const Home: NextPage = () => {
                 </div>
               </Section>
             )}
-
             {/* links */}
             {user.linksSection && (
               <Section

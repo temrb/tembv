@@ -12,12 +12,25 @@ import { user } from '../data/userData';
 
 const Home: NextPage = () => {
   const [share, setShare] = useState(false);
-  const [showTools, setShowTools] = useState(false);
-  
-  let currentLocation: string;
+  const [linksData, setLinksData] = useState<any>([]);
+  const [socialsData, setSocialsData] = useState<any>([]);
+  const [userData, setUserData] = useState<any>({});
+
   useEffect(() => {
-    currentLocation = window.location.href;
-  });
+    setUserData(user);
+    setLinksData(links);
+    setSocialsData(socials);
+  }, [linksData, socialsData, userData]);
+
+  if (userData == 0 || linksData == 0 || socialsData == 0) {
+    return (
+      <div className='flex justify-center items-center h-screen text-xl'>
+        Loading...⌛️
+      </div>
+    );
+  }
+
+  let currentLocation = window.location.href;
   const onShare = () => {
     const clipboard = navigator.clipboard.writeText(currentLocation);
     clipboard
@@ -33,7 +46,7 @@ const Home: NextPage = () => {
   return (
     <div className='flex py-8 min-h-screen overflow-auto flex-col items-center justify-center'>
       <Head>
-        <title>{user.name}</title>
+        <title>{userData?.name}</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className='flex w-full flex-1 justify-center'>
@@ -41,40 +54,44 @@ const Home: NextPage = () => {
           {/* avatar */}
           <div className='flex space-x-2 justify-between items-center w-full'>
             <Image
-              src={`/${user.imageName}`}
+              src={`/${userData?.imageName}`}
               alt='avatar'
+              placeholder='empty'
               width={75}
               height={75}
-              className='rounded-full
-                justify-center items-center flex
-                '
+              className='justify-center items-center flex rounded-lg'
             />
             <button
               className={`
                 ${
                   share
-                    ? `bg-green-200 ring-green-500 focus:ring-2 font-semibold`
-                    : `bg-blue-100 font-semibold`
+                    ? `bg-green-200 ring-green-500 focus:ring-2 text-green-800 font-semibold`
+                    : `bg-blue-100 font-semibold text-gray-500`
                 }         hover:ring-2 text-xs py-1 px-2 rounded-lg`}
               onClick={onShare}
             >
               {share ? 'URL Copied ✅' : 'Share URL 🔗'}
             </button>
           </div>
-          <div className='space-y-4'>
+          <div className='space-y-4 max-w-xs'>
             {/* heading */}
-            <Heading title={` ${user.title}`} subTitle={` ${user.subTitle}`} />
+
+            <Heading
+              title={` ${userData?.title}`}
+              subTitle={` ${userData?.subTitle}`}
+            />
             {/* socials */}
-            {user.socialSection && (
+            {userData?.socialSection && (
               <Section title='Socials 🚀' borderColor='border-violet-400'>
                 <div className='gap-1 items-center w-full'>
                   <div className='overflow-x-auto py-4 flex gap-2 items-center'>
-                    {socials.map((social) => (
+                    {socialsData?.map((socialsData: any) => (
                       <Socials
-                        key={social.id}
-                        textColor={social.textColor}
-                        link={social.link}
-                        linkText={social.linkText}
+                        key={socialsData?.id}
+                        textColor='text-violet-700'
+                        bgColor='bg-violet-200'
+                        link={socialsData?.link}
+                        linkText={socialsData?.linkText}
                       />
                     ))}
                   </div>
@@ -82,19 +99,17 @@ const Home: NextPage = () => {
               </Section>
             )}
             {/* links */}
-            {user.linksSection && (
-              <Section
-                title='Mentioned Links 🔗'
-                borderColor='border-blue-400 '
-              >
+            {userData?.linksSection && (
+              <Section title='Mentioned Links 🖇' borderColor='border-blue-400'>
                 <div className='gap-1 items-center w-full'>
                   <div className='overflow-x-auto py-4 flex gap-2 items-center'>
-                    {links.map((link) => (
+                    {linksData.map((linksData: any) => (
                       <Links
-                        key={link.id}
-                        textColor={link.textColor}
-                        link={link.link}
-                        linkText={link.linkText}
+                        key={linksData?.id}
+                        textColor='text-blue-700'
+                        bgColor='bg-blue-200'
+                        link={linksData?.link}
+                        linkText={linksData?.linkText}
                       />
                     ))}
                   </div>

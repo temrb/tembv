@@ -11,4 +11,9 @@ export const links = [
     link: 'https://www.copy.ai/?via=tembee',
     linkText: 'CopyAI',
   },
+  {
+    id: '3',
+    link: 'https://www.adalo.com/?via=tembee',
+    linkText: 'Adalo',
+  },
 ];

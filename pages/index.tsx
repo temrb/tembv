@@ -2,12 +2,16 @@ import type { NextPage } from 'next';
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
-import Tools from '../components/tools.component';
+import Section from '../components/section.component';
+import Links from '../components/links.component';
+import Socials from '../components/socials.component';
+import Heading from '../components/heading.component';
+import { links } from '../data/linkData';
+import { socials } from '../data/socialsData';
+import { user } from '../data/userData';
 
 const Home: NextPage = () => {
   const [share, setShare] = useState(false);
-  const [showTools, setShowTools] = useState(false);
 
   let currentLocation: string;
   useEffect(() => {
@@ -26,20 +30,18 @@ const Home: NextPage = () => {
         }, 2000);
       });
   };
-
   return (
     <div className='flex py-8 min-h-screen overflow-auto flex-col items-center justify-center'>
       <Head>
-        <title>Tem</title>
+        <title>{user.name}</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
       <main className='flex w-full flex-1 justify-center'>
         <div className='space-y-4'>
           {/* avatar */}
           <div className='flex space-x-2 justify-between items-center w-full'>
             <Image
-              src='/IMG_3823.jpg'
+              src={`/${user.imageName}`}
               alt='avatar'
               width={75}
               height={75}
@@ -51,57 +53,56 @@ const Home: NextPage = () => {
               className={`
                 ${
                   share
-                    ? `bg-blue-300 ring-blue-500 focus:ring-2 font-semibold`
-                    : `bg-blue-200 font-semibold`
-                }               text-xs py-1 px-2 rounded-lg`}
+                    ? `bg-green-200 ring-green-500 focus:ring-2 font-semibold`
+                    : `bg-blue-100 font-semibold`
+                }         hover:ring-2 text-xs py-1 px-2 rounded-lg`}
               onClick={onShare}
             >
-              {share ? 'URL Copied!' : 'Copy URL'}
+              {share ? 'URL Copied ✅' : 'Share URL 🔗'}
             </button>
           </div>
-          <div className='space-y-2'>
-            {/* intro */}
-            <div className='space-y-1'>
-              <div className='flex'>
-                <h1 className='font-bold text-2xl flex'>Hi, I'm Tem! 👋</h1>
-              </div>
-              <p className='text-md font-light'>
-                I'm curious about tech and how it works.
-              </p>
-            </div>
-            <hr />
+          <div className='space-y-4'>
+            {/* heading */}
+            <Heading title={` ${user.title}`} subTitle={` ${user.subTitle}`} />
+
             {/* socials */}
-            <div className='space-y-1 border-2 border-violet-400 p-4 rounded-lg'>
-              <div className='flex'>
-                <h1 className='font-semibold text-2xl flex'>Socials 🚀</h1>
-              </div>
-              <div className='gap-1 items-center'>
-                <div className='overflow-x-auto flex gap-2 items-center'>
-                  <div className='flex justify-center bg-violet-400 hover:bg-violet-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
-                    <Link href='https://www.tiktok.com/@tem.bv'>TikTok</Link>
-                  </div>
-                  <div className='flex justify-center bg-violet-400 hover:bg-violet-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
-                    <Link href='https://tembee.vercel.app/'>Blog</Link>
+            {user.socialSection && (
+              <Section title='Socials 🚀' borderColor='border-violet-400'>
+                <div className='gap-1 items-center w-full'>
+                  <div className='overflow-x-auto py-4 flex gap-2 items-center'>
+                    {socials.map((social) => (
+                      <Socials
+                        key={social.id}
+                        textColor={social.textColor}
+                        link={social.link}
+                        linkText={social.linkText}
+                      />
+                    ))}
                   </div>
                 </div>
-              </div>
-            </div>
-            {/* content */}
-            <div className='space-y-1 border-2 border-blue-400 p-4 rounded-lg'>
-              <div className='flex'>
-                <h1 className='font-semibold text-2xl flex'>From TikTok ⚙️</h1>
-              </div>
-              <div className='gap-1 space-y-1 items-center grid'>
-                <button
-                  onClick={() => setShowTools(!showTools)}
-                  className='mx-auto bg-blue-400 hover:bg-blue-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'
-                >
-                  {showTools ? 'Hide' : 'Show'} Tools
-                </button>
+              </Section>
+            )}
 
-                <div>{showTools && <Tools />}</div>
-              </div>
-            </div>
+            {/* links */}
+            {user.linksSection && (
+              <Section
+                title='Mentioned Links 🔗'
+                borderColor='border-blue-400 '
+              >
+                <div className='gap-1 items-center w-full'>
+                  <div className='overflow-x-auto py-4 flex gap-2 items-center'>
+                    {links.map((link) => (
+                      <Links
+                        key={link.id}
+                        textColor={link.textColor}
+                        link={link.link}
+                        linkText={link.linkText}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </Section>
+            )}
           </div>
         </div>
       </main>

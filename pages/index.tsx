@@ -131,6 +131,11 @@ const Home: NextPage = () => {
                 </Section>
               </motion.div>
             )}
+
+            {/* footer */}
+            <div className='text-xs font-light flex justify-end'>
+              thanks for stopping by ❤️
+            </div>
           </div>
         </div>
       </main>

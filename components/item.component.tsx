@@ -11,7 +11,7 @@ interface Props {
 const Item = ({ textColor, link, linkText, bgColor }: Props) => {
   return (
     <div
-      className={`flex justify-center ${textColor} py-1 px-2 rounded-lg ${bgColor} font-semibold cursor-pointer`}
+      className={`flex justify-center ${textColor} py-1 px-2 truncate ... rounded-lg ${bgColor} font-semibold cursor-pointer`}
     >
       <Link href={`${link}`}>{linkText}</Link>
     </div>

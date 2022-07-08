@@ -5,13 +5,19 @@ interface Props {
   textColor: string;
   link: string;
   linkText: string;
+  bgColor: string;
 }
 
-const Socials = ({ textColor, link, linkText }: Props) => {
+const Socials = ({ textColor, link, linkText, bgColor }: Props) => {
   return (
-    <>
-      <Item textColor={textColor} link={link} linkText={linkText} />
-    </>
+    <div className='px-1'>
+      <Item
+        textColor={textColor}
+        link={link}
+        linkText={linkText}
+        bgColor={bgColor}
+      />
+    </div>
   );
 };
 

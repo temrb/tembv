@@ -133,9 +133,14 @@ const Home: NextPage = () => {
             )}
 
             {/* footer */}
-            <div className='text-xs font-light flex justify-end'>
+            <motion.div
+              className='text-xs font-light flex justify-end'
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: 'easeInOut', delay: 1.5 }}
+            >
               thanks for stopping by ❤️
-            </div>
+            </motion.div>
           </div>
         </div>
       </main>

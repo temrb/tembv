@@ -43,7 +43,6 @@ const Home: NextPage = () => {
         }, 2000);
       });
   };
-
   return (
     <div className='flex py-8 min-h-screen overflow-auto flex-col items-center justify-center'>
       <Head>

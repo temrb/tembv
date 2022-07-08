@@ -9,6 +9,7 @@ import Heading from '../components/heading.component';
 import { links } from '../data/linkData';
 import { socials } from '../data/socialsData';
 import { user } from '../data/userData';
+import { motion } from 'framer-motion';
 
 const Home: NextPage = () => {
   const [share, setShare] = useState(false);
@@ -75,46 +76,60 @@ const Home: NextPage = () => {
           </div>
           <div className='space-y-4 max-w-xs'>
             {/* heading */}
-
             <Heading
               title={` ${userData?.title}`}
               subTitle={` ${userData?.subTitle}`}
             />
             {/* socials */}
             {userData?.socialSection && (
-              <Section title='Socials 🚀' borderColor='border-violet-400'>
-                <div className='gap-1 items-center w-full'>
-                  <div className='overflow-x-auto py-4 flex gap-2 items-center'>
-                    {socialsData?.map((socialsData: any) => (
-                      <Socials
-                        key={socialsData?.id}
-                        textColor='text-violet-700'
-                        bgColor='bg-violet-200'
-                        link={socialsData?.link}
-                        linkText={socialsData?.linkText}
-                      />
-                    ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.3 }}
+              >
+                <Section title='Socials 🚀' borderColor='border-violet-400'>
+                  <div className='gap-1 items-center w-full'>
+                    <div className='overflow-x-auto py-4 flex gap-2 items-center'>
+                      {socialsData?.map((socialsData: any) => (
+                        <Socials
+                          key={socialsData?.id}
+                          textColor='text-violet-700'
+                          bgColor='bg-violet-200'
+                          link={socialsData?.link}
+                          linkText={socialsData?.linkText}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </Section>
+                </Section>
+              </motion.div>
             )}
             {/* links */}
             {userData?.linksSection && (
-              <Section title='Mentioned Links 🖇' borderColor='border-blue-400'>
-                <div className='gap-1 items-center w-full'>
-                  <div className='overflow-x-auto py-4 flex gap-2 items-center'>
-                    {linksData.map((linksData: any) => (
-                      <Links
-                        key={linksData?.id}
-                        textColor='text-blue-700'
-                        bgColor='bg-blue-200'
-                        link={linksData?.link}
-                        linkText={linksData?.linkText}
-                      />
-                    ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.8 }}
+              >
+                <Section
+                  title='Mentioned Links 🖇'
+                  borderColor='border-blue-400'
+                >
+                  <div className='gap-1 items-center w-full'>
+                    <div className='overflow-x-auto py-4 flex gap-2 items-center'>
+                      {linksData.map((linksData: any) => (
+                        <Links
+                          key={linksData?.id}
+                          textColor='text-blue-700'
+                          bgColor='bg-blue-200'
+                          link={linksData?.link}
+                          linkText={linksData?.linkText}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </Section>
+                </Section>
+              </motion.div>
             )}
           </div>
         </div>

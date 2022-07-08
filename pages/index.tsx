@@ -78,7 +78,7 @@ const Home: NextPage = () => {
               <div className='gap-1 items-center'>
                 <div className='overflow-x-auto flex gap-2 items-center'>
                   <div className='flex justify-center bg-violet-400 hover:bg-violet-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
-                    <Link href='https://www.tiktok.com/@tem.io'>TikTok</Link>
+                    <Link href='https://www.tiktok.com/@tem.bv'>TikTok</Link>
                   </div>
                   <div className='flex justify-center bg-violet-400 hover:bg-violet-600 transition-all ease-in-out text-white py-1 px-2 rounded-lg font-semibold cursor-pointer'>
                     <Link href='https://tembee.vercel.app/'>Blog</Link>

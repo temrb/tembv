@@ -43,6 +43,12 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'darkMode',
+      title: 'Dark Mode',
+      type: 'boolean',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'showSocialSection',
       title: 'Social Section',
       type: 'boolean',

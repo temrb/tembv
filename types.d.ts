@@ -19,6 +19,7 @@ export interface UserTypes {
   title: string;
   subTitle: string;
   footer: string;
+  darkMode: boolean;
   showFooterSection: boolean;
   showSocialSection: boolean;
   showLinksSection: boolean;

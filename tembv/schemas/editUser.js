@@ -37,6 +37,24 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'socialsTitle',
+      title: 'Socials Title',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'linksTitle',
+      title: 'Links Title',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'productsTitle',
+      title: 'Products Title',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'footer',
       title: 'Footer',
       type: 'string',
@@ -57,6 +75,12 @@ export default {
     {
       name: 'showLinksSection',
       title: 'Links Section',
+      type: 'boolean',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'showProductsSection',
+      title: 'Products Section',
       type: 'boolean',
       validation: Rule => Rule.required(),
     },

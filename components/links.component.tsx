@@ -7,9 +7,22 @@ interface Props {
   linkText: string;
   bgColor: string;
   createdAt?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  discount?: number;
 }
 
-const Links = ({ textColor, link, linkText, bgColor, createdAt }: Props) => {
+const Links = ({
+  textColor,
+  link,
+  linkText,
+  bgColor,
+  createdAt,
+  description,
+  price,
+  discount,
+}: Props) => {
   return (
     <div className='px-1'>
       <Item
@@ -18,6 +31,9 @@ const Links = ({ textColor, link, linkText, bgColor, createdAt }: Props) => {
         linkText={linkText}
         bgColor={bgColor}
         createdAt={createdAt}
+        description={description}
+        price={price}
+        discount={discount}
       />
     </div>
   );

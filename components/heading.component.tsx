@@ -1,19 +1,17 @@
 import React from 'react';
 
 interface Props {
-    title: string;
-    subTitle: string;
+  title: string;
+  subTitle: string;
 }
 
-const Heading = ({title, subTitle}:Props) => {
+const Heading = ({ title, subTitle }: Props) => {
   return (
     <div className='space-y-1'>
       <div className='flex'>
-        <h1 className='font-bold text-2xl flex'>{title}</h1>
+        <h1 className='font-bold text-2xl flex dark:text-gray-200'>{title}</h1>
       </div>
-      <p className='text-md font-light'>
-        {subTitle}
-      </p>
+      <p className='text-sm font-light dark:text-gray-200'>{subTitle}</p>
     </div>
   );
 };

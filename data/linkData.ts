@@ -16,4 +16,9 @@ export const links = [
     link: 'https://www.adalo.com/?via=tembee',
     linkText: 'Adalo',
   },
+  {
+    id: '4',
+    link: 'https://interviewing.io/',
+    linkText: 'Interviewing.io',
+  },
 ];

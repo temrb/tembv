@@ -1,8 +1,12 @@
+import React from 'react';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import * as ga from '../lib/ga';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { Provider } from 'react-redux';
+import { store } from '../redux/store';
+import Layout from '../components/layout.component';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -21,9 +25,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
   return (
-    <>
-      <Component {...pageProps} />
-    </>
+    <React.StrictMode>
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
+    </React.StrictMode>
   );
 }
 

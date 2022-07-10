@@ -8,7 +8,6 @@ import Links from '../components/links.component';
 import Socials from '../components/socials.component';
 import Heading from '../components/heading.component';
 import { motion } from 'framer-motion';
-import Phone from '../components/phone.component';
 import { MoonIcon, SunIcon, MailIcon } from '@heroicons/react/solid';
 import { useAppSelector, useAppDispatch } from '../hooks/useRedux';
 import { setLightMode } from '../redux/fetaures/utilsSlice';
@@ -26,6 +25,7 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ socials, links, user }) => {
+  console.log('🚀 ~ file: index.tsx ~ line 28 ~ user', links);
   const [share, setShare] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -64,7 +64,7 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                 className='justify-center items-center flex rounded-lg'
               />
               <div className='grid content-between gap-4 '>
-                <div className='flex justify-between'>
+                <div className='flex justify-between items-center'>
                   <div className='cursor-pointer'>
                     <Link href={`mailto:${user[0].contactEmail}`}>
                       <MailIcon className='text-gray-400 h-7' />
@@ -155,12 +155,11 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                   >
                     <div className='gap-1 items-center w-full'>
                       <div className='overflow-x-auto py-4 flex gap-2 items-center'>
-                        {/* sort by createdDate */}
                         {links
-                          ?.sort((a: any, b: any) => {
+                          .sort((a: any, b: any) => {
                             return (
-                              new Date(b.createdDate).getTime() -
-                              new Date(a.createdDate).getTime()
+                              new Date(b._createdAt).getTime() -
+                              new Date(a._createdAt).getTime()
                             );
                           })
                           ?.map((link: any) => (
@@ -170,6 +169,7 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                               bgColor='bg-blue-200'
                               link={link.link}
                               linkText={link.linkText}
+                              createdAt={link._createdAt}
                             />
                           ))}
                       </div>
@@ -211,9 +211,9 @@ export const getServerSideProps = async () => {
 }`;
   const linksQuery = `*[_type =='links']{
   _id,
+  _createdAt,
   link,
   linkText,
-  createdDate
 }`;
   const socialsQuery = `*[_type =='socials']{
   _id,
@@ -221,7 +221,7 @@ export const getServerSideProps = async () => {
   linkText,
 }`;
 
-  // set loading true while fetching and false when done
+  // loading
 
   const [user, links, socials] = await Promise.all([
     sanityClient.fetch(userQuery),

@@ -17,7 +17,7 @@ export default {
     },
     {
       name: 'createdAt',
-      title: 'Mentioned Date',
+      title: 'Created Date',
       type: 'datetime',
       validation: Rule => Rule.required(),
     },

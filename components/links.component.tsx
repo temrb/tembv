@@ -6,9 +6,14 @@ interface Props {
   link: string;
   linkText: string;
   bgColor: string;
+  createdAt?: string;
 }
 
-const Links = ({ textColor, link, linkText, bgColor }: Props) => {
+const Links = ({ textColor, link, linkText, bgColor, createdAt }: Props) => {
+  console.log(
+    '🚀 ~ file: links.component.tsx ~ line 13 ~ Links ~ createdAt',
+    createdAt
+  );
   return (
     <div className='px-1'>
       <Item
@@ -16,6 +21,7 @@ const Links = ({ textColor, link, linkText, bgColor }: Props) => {
         link={link}
         linkText={linkText}
         bgColor={bgColor}
+        createdAt={createdAt}
       />
     </div>
   );

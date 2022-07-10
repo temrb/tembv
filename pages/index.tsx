@@ -59,23 +59,24 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
               height={75}
               className='justify-center items-center flex rounded-lg'
             />
-            <div className='grid content-between gap-4 '>
+            <div className='grid content-between gap-4 mx-auto'>
               <div className='cursor-pointer flex justify-end'>
                 <Link href={`mailto:${user[0].contactEmail}`}>
                   <MailIcon className='text-gray-400 h-7' />
                 </Link>
               </div>
-              <button
+              <div
                 className={`
                     ${
                       share
                         ? `bg-green-200 ring-green-500 focus:ring-2 text-green-800 font-semibold`
                         : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
                     }         hover:ring-2 text-xs py-1 px-2 rounded-lg`}
-                onClick={onShare}
               >
-                {share ? 'Url Copied!' : 'Share Url'}
-              </button>
+                <button onClick={onShare}>
+                  {share ? 'Copied! ✅' : 'Copy Url 🔗'}
+                </button>
+              </div>
             </div>
           </div>
           <div className='space-y-4 max-w-xs'>
@@ -124,7 +125,7 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                 }}
               >
                 <Section
-                  title='Mentioned Links 🔗'
+                  title='Mentioned Links 🖇'
                   borderColor='border-blue-400'
                   scroll={true}
                 >

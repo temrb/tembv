@@ -69,9 +69,9 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                 className={`
                     ${
                       share
-                        ? `bg-green-200 ring-green-500 focus:ring-2 text-green-800 font-semibold`
+                        ? `bg-green-200 text-green-800 font-semibold`
                         : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
-                    }         hover:ring-2 text-xs py-1 px-2 rounded-lg`}
+                    }          text-xs py-1 px-2 rounded-lg`}
               >
                 <button onClick={onShare}>
                   {share ? 'Copied! ✅' : 'Copy Url 🔗'}

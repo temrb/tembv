@@ -51,14 +51,16 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
         <div className='space-y-4'>
           {/* avatar */}
           <div className='flex justify-between items-center w-full'>
-            <Image
-              src={urlFor(user[0].image).url()}
-              alt='avatar'
-              placeholder='empty'
-              width={75}
-              height={75}
-              className=' items-center flex rounded-lg'
-            />
+            <div className='flex'>
+              <Image
+                src={urlFor(user[0].image).url()}
+                alt='avatar'
+                placeholder='empty'
+                width={75}
+                height={75}
+                className=' items-center flex rounded-lg'
+              />
+            </div>
 
             <div className='flex justify-end'>
               <div className='grid content-between gap-4 mx-auto'>
@@ -67,16 +69,17 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                     <MailIcon className='text-gray-400 h-7' />
                   </Link>
                 </div>
-                <div
+                <button
                   className={`
-                      ${
-                        share
-                          ? `bg-green-200 text-green-800 font-semibold`
-                          : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
-                      }          text-xs py-1 px-2 rounded-lg flex `}
+                    ${
+                      share
+                        ? `bg-green-200 ring-green-500 focus:ring-2 text-green-800 font-semibold`
+                        : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
+                    }         ring-2 text-sm py-1 px-2 rounded-full`}
+                  onClick={onShare}
                 >
-                  <button onClick={onShare}>{share ? 'Url Copied!' : 'Share Url'}</button>
-                </div>
+                  {share ? 'Copied' : 'Share'}
+                </button>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 import { MoonIcon, SunIcon, MailIcon } from '@heroicons/react/solid';
 import { useAppSelector, useAppDispatch } from '../hooks/useRedux';
 import { setLightMode } from '../redux/fetaures/utilsSlice';
-import { SocialsTypes, LinksTypes, UserTypes } from '../types';
+import { SocialsTypes, LinksTypes, UserTypes, ProductsTypes } from '../types';
 import { sanityClient, urlFor } from '../sanity';
 
 interface RootState {
@@ -22,9 +22,10 @@ interface Props {
   socials: [SocialsTypes];
   links: [LinksTypes];
   user: [UserTypes];
+  products: [ProductsTypes];
 }
 
-const Home: NextPage<Props> = ({ socials, links, user }) => {
+const Home: NextPage<Props> = ({ socials, links, user, products }) => {
   const [share, setShare] = useState(false);
   const lightMode = useAppSelector((state: RootState) => state.utils.lightMode);
 
@@ -61,7 +62,6 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                 className=' items-center flex rounded-lg'
               />
             </div>
-
             <div className='flex justify-end'>
               <div className='grid content-between gap-4 mx-auto'>
                 <div className='cursor-pointer flex justify-end'>
@@ -97,10 +97,13 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                 transition={{
                   duration: 0.5,
                   ease: 'easeInOut',
-                  delay: 0.3,
+                  delay: 0.2,
                 }}
               >
-                <Section title='Socials 🚀' borderColor='border-violet-400'>
+                <Section
+                  title={user[0].socialsTitle}
+                  borderColor='border-violet-400'
+                >
                   <div className='gap-1 items-center w-full'>
                     <div className='overflow-x-auto py-4 flex gap-2 items-center'>
                       {socials.map((social: any) => (
@@ -125,11 +128,11 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                 transition={{
                   duration: 0.5,
                   ease: 'easeInOut',
-                  delay: 0.8,
+                  delay: 0.5,
                 }}
               >
                 <Section
-                  title='Mentioned Links 🔗'
+                  title={user[0].linksTitle}
                   borderColor='border-blue-400'
                   scroll={true}
                 >
@@ -157,6 +160,51 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                 </Section>
               </motion.div>
             )}
+
+            {/* products */}
+            {user[0].showProductsSection && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: 'easeInOut',
+                  delay: 0.8,
+                }}
+              >
+                <Section
+                  title={user[0].productsTitle}
+                  borderColor='border-orange-400'
+                  scroll={true}
+                >
+                  <div className='gap-1 items-center w-full'>
+                    <div className='overflow-x-auto py-4 flex gap-2 items-center'>
+                      {products
+                        .sort((a: any, b: any) => {
+                          return (
+                            new Date(b._createdAt).getTime() -
+                            new Date(a._createdAt).getTime()
+                          );
+                        })
+                        ?.map((product: any) => (
+                          <Links
+                            key={product._id}
+                            textColor='text-orange-700'
+                            bgColor='bg-orange-200'
+                            link={product.link}
+                            linkText={product.name}
+                            name={product.name}
+                            description={product.description}
+                            price={product.price}
+                            discount={product.discount || null}
+                          />
+                        ))}
+                    </div>
+                  </div>
+                </Section>
+              </motion.div>
+            )}
+
             {/* footer */}
             <motion.div
               className={`flex ${
@@ -209,17 +257,30 @@ export const getServerSideProps = async () => {
   contactEmail,
   title,
   subTitle,
+  socialsTitle,
+  linksTitle,
+  productsTitle,
   footer,
   darkMode,
   showFooterSection,
   showSocialSection,
   showLinksSection,
+  showProductsSection,
 }`;
   const linksQuery = `*[_type =='links']{
   _id,
   _createdAt,
   link,
   linkText,
+}`;
+  const productsQuery = `*[_type =='products']{
+  _id,
+  _createdAt,
+  name,
+  description,
+  price,
+  discount,
+  link
 }`;
   const socialsQuery = `*[_type =='socials']{
   _id,
@@ -229,16 +290,18 @@ export const getServerSideProps = async () => {
 
   //set loading true when fetching data and false when data is fetched
 
-  const [user, links, socials] = await Promise.all([
+  const [user, links, socials, products] = await Promise.all([
     sanityClient.fetch(userQuery),
     sanityClient.fetch(linksQuery),
     sanityClient.fetch(socialsQuery),
+    sanityClient.fetch(productsQuery),
   ]);
   return {
     props: {
       user: user,
       links: links,
       socials: socials,
+      products: products,
     },
   };
 };

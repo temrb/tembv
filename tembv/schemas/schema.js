@@ -7,6 +7,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // We import object and document schemas
 import links from './links'
 import socials from './socials'
+import products from './products'
 import editUser from './editUser'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -20,6 +21,7 @@ export default createSchema({
     // in the studio.
     editUser,
     socials,
+    products,
     links,
   ]),
 })

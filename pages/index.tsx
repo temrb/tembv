@@ -71,11 +71,9 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                       share
                         ? `bg-green-200 text-green-800 font-semibold`
                         : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
-                    }          text-xs py-1 px-2 rounded-lg`}
+                    }          text-xs py-1 px-2 rounded-lg flex `}
               >
-                <button onClick={onShare}>
-                  {share ? 'Copied! ✅' : 'Copy Url 🔗'}
-                </button>
+                <button onClick={onShare}>{share ? 'Copied! ✅' : 'Copy Url 🔗'}</button>
               </div>
             </div>
           </div>

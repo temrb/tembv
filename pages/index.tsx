@@ -50,30 +50,33 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
       <main className='flex w-full flex-1 justify-center'>
         <div className='space-y-4'>
           {/* avatar */}
-          <div className='flex space-x-2 justify-between items-center w-full'>
+          <div className='flex justify-between items-center w-full'>
             <Image
               src={urlFor(user[0].image).url()}
               alt='avatar'
               placeholder='empty'
               width={75}
               height={75}
-              className='justify-center items-center flex rounded-lg'
+              className=' items-center flex rounded-lg'
             />
-            <div className='grid content-between gap-4 mx-auto'>
-              <div className='cursor-pointer flex justify-end'>
-                <Link href={`mailto:${user[0].contactEmail}`}>
-                  <MailIcon className='text-gray-400 h-7' />
-                </Link>
-              </div>
-              <div
-                className={`
-                    ${
-                      share
-                        ? `bg-green-200 text-green-800 font-semibold`
-                        : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
-                    }          text-xs py-1 px-2 rounded-lg flex `}
-              >
-                <button onClick={onShare}>{share ? 'Copied!' : 'Share Url'}</button>
+
+            <div className='flex justify-end'>
+              <div className='grid content-between gap-4 mx-auto'>
+                <div className='cursor-pointer flex justify-end'>
+                  <Link href={`mailto:${user[0].contactEmail}`}>
+                    <MailIcon className='text-gray-400 h-7' />
+                  </Link>
+                </div>
+                <div
+                  className={`
+                      ${
+                        share
+                          ? `bg-green-200 text-green-800 font-semibold`
+                          : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
+                      }          text-xs py-1 px-2 rounded-lg flex `}
+                >
+                  <button onClick={onShare}>{share ? 'Url Copied!' : 'Share Url'}</button>
+                </div>
               </div>
             </div>
           </div>

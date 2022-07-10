@@ -10,10 +10,6 @@ interface Props {
 }
 
 const Links = ({ textColor, link, linkText, bgColor, createdAt }: Props) => {
-  console.log(
-    '🚀 ~ file: links.component.tsx ~ line 13 ~ Links ~ createdAt',
-    createdAt
-  );
   return (
     <div className='px-1'>
       <Item

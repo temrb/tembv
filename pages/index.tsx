@@ -73,7 +73,7 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                         : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
                     }          text-xs py-1 px-2 rounded-lg flex `}
               >
-                <button onClick={onShare}>{share ? 'Copied! ✅' : 'Copy Url'}</button>
+                <button onClick={onShare}>{share ? 'Copied!' : 'Share Url'}</button>
               </div>
             </div>
           </div>

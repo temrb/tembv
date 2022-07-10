@@ -25,9 +25,7 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ socials, links, user }) => {
-  console.log('🚀 ~ file: index.tsx ~ line 28 ~ user', user);
   const [share, setShare] = useState(false);
-
   const lightMode = useAppSelector((state: RootState) => state.utils.lightMode);
 
   const onShare = () => {
@@ -76,7 +74,7 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                     }         hover:ring-2 text-xs py-1 px-2 rounded-lg`}
                 onClick={onShare}
               >
-                {share ? 'URL Copied ✅' : 'Share Me! 🔗'}
+                {share ? 'Copied ✅' : 'Share URL! 🔗'}
               </button>
             </div>
           </div>

@@ -89,8 +89,8 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
               title={` ${user[0].title}`}
               subTitle={` ${user[0].subTitle}`}
             />
-            {/* socials */}
-            {user[0].showSocialSection && (
+            {/* products */}
+            {user[0].showProductsSection && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -101,20 +101,32 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                 }}
               >
                 <Section
-                  title={user[0].socialsTitle}
-                  borderColor='border-violet-400'
+                  title={user[0].productsTitle}
+                  borderColor='border-orange-400'
+                  scroll={true}
                 >
                   <div className='gap-1 items-center w-full'>
                     <div className='overflow-x-auto py-4 flex gap-2 items-center'>
-                      {socials.map((social: any) => (
-                        <Socials
-                          key={social._id}
-                          textColor='text-violet-700'
-                          bgColor='bg-violet-200'
-                          link={social.link}
-                          linkText={social.linkText}
-                        />
-                      ))}
+                      {products
+                        .sort((a: any, b: any) => {
+                          return (
+                            new Date(b._createdAt).getTime() -
+                            new Date(a._createdAt).getTime()
+                          );
+                        })
+                        ?.map((product: any) => (
+                          <Links
+                            key={product._id}
+                            textColor='text-orange-700'
+                            bgColor='bg-orange-200'
+                            link={product.link}
+                            linkText={product.name}
+                            name={product.name}
+                            description={product.description}
+                            price={product.price}
+                            discount={product.discount || null}
+                          />
+                        ))}
                     </div>
                   </div>
                 </Section>
@@ -160,9 +172,8 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                 </Section>
               </motion.div>
             )}
-
-            {/* products */}
-            {user[0].showProductsSection && (
+            {/* socials */}
+            {user[0].showSocialSection && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -173,38 +184,25 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                 }}
               >
                 <Section
-                  title={user[0].productsTitle}
-                  borderColor='border-orange-400'
-                  scroll={true}
+                  title={user[0].socialsTitle}
+                  borderColor='border-violet-400'
                 >
                   <div className='gap-1 items-center w-full'>
                     <div className='overflow-x-auto py-4 flex gap-2 items-center'>
-                      {products
-                        .sort((a: any, b: any) => {
-                          return (
-                            new Date(b._createdAt).getTime() -
-                            new Date(a._createdAt).getTime()
-                          );
-                        })
-                        ?.map((product: any) => (
-                          <Links
-                            key={product._id}
-                            textColor='text-orange-700'
-                            bgColor='bg-orange-200'
-                            link={product.link}
-                            linkText={product.name}
-                            name={product.name}
-                            description={product.description}
-                            price={product.price}
-                            discount={product.discount || null}
-                          />
-                        ))}
+                      {socials.map((social: any) => (
+                        <Socials
+                          key={social._id}
+                          textColor='text-violet-700'
+                          bgColor='bg-violet-200'
+                          link={social.link}
+                          linkText={social.linkText}
+                        />
+                      ))}
                     </div>
                   </div>
                 </Section>
               </motion.div>
             )}
-
             {/* footer */}
             <motion.div
               className={`flex ${

@@ -74,7 +74,7 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                     }         hover:ring-2 text-xs py-1 px-2 rounded-lg`}
                 onClick={onShare}
               >
-                {share ? 'Copied ✅' : 'Url 🔗'}
+                {share ? 'Url Copied!' : 'Share Url'}
               </button>
             </div>
           </div>
@@ -124,7 +124,7 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                 }}
               >
                 <Section
-                  title='Mentioned Links 🖇'
+                  title='Mentioned Links 🔗'
                   borderColor='border-blue-400'
                   scroll={true}
                 >

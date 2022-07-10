@@ -64,31 +64,37 @@ const Home: NextPage<Props> = ({ socials, links, user }) => {
                 className='justify-center items-center flex rounded-lg'
               />
               <div className='grid content-between gap-4 '>
-                <div className='flex justify-between items-center'>
+                <div
+                  className={`flex ${
+                    user[0].darkMode ? 'justify-between' : 'justify-end'
+                  } items-center`}
+                >
                   <div className='cursor-pointer'>
                     <Link href={`mailto:${user[0].contactEmail}`}>
                       <MailIcon className='text-gray-400 h-7' />
                     </Link>
                   </div>
-                  <div className='flex'>
-                    {lightMode ? (
-                      <button
-                        onClick={() => {
-                          useAppDispatch(setLightMode(false));
-                        }}
-                      >
-                        <SunIcon className='text-yellow-500 h-7' />
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => {
-                          useAppDispatch(setLightMode(true));
-                        }}
-                      >
-                        <MoonIcon className='text-gray-500 h-7' />
-                      </button>
-                    )}
-                  </div>
+                  {user[0].darkMode && (
+                    <div className='flex'>
+                      {lightMode ? (
+                        <button
+                          onClick={() => {
+                            useAppDispatch(setLightMode(false));
+                          }}
+                        >
+                          <SunIcon className='text-yellow-500 h-7' />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            useAppDispatch(setLightMode(true));
+                          }}
+                        >
+                          <MoonIcon className='text-gray-500 h-7' />
+                        </button>
+                      )}
+                    </div>
+                  )}
                 </div>
                 <button
                   className={`
@@ -205,6 +211,7 @@ export const getServerSideProps = async () => {
   title,
   subTitle,
   footer,
+  darkMode,
   showFooterSection,
   showSocialSection,
   showLinksSection,

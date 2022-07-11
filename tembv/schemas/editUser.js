@@ -61,8 +61,14 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'darkMode',
-      title: 'Dark Mode',
+      name: 'showProductsSection',
+      title: 'Products Section',
+      type: 'boolean',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'showLinksSection',
+      title: 'Links Section',
       type: 'boolean',
       validation: Rule => Rule.required(),
     },
@@ -73,8 +79,8 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'showLinksSection',
-      title: 'Links Section',
+      name: 'darkMode',
+      title: 'Dark Mode',
       type: 'boolean',
       validation: Rule => Rule.required(),
     },

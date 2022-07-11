@@ -6,6 +6,7 @@ interface Props {
   link: string;
   linkText: string;
   bgColor: string;
+  borderColor?: string;
   createdAt?: string;
   name?: string;
   description?: string;
@@ -18,13 +19,20 @@ const Links = ({
   link,
   linkText,
   bgColor,
+  borderColor,
   createdAt,
   description,
   price,
   discount,
 }: Props) => {
   return (
-    <div className='px-1'>
+    <div
+      className={`
+    {
+      ${borderColor ? `px-1 border-2 border-dashed ${borderColor} rounded-lg pt-1 pb-2` : 'px-1'}
+    }
+    `}
+    >
       <Item
         textColor={textColor}
         link={link}

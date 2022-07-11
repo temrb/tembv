@@ -16,6 +16,7 @@ export interface ProductsTypes{
   _id: string;
   _createdAt: string;
   name: string;
+  logo: string;
   description: string;
   price: number;
   discount: number;

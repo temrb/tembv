@@ -89,7 +89,8 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
               title={` ${user[0].title}`}
               subTitle={` ${user[0].subTitle}`}
             />
-            <motion.p className='text-gray-500 dark:text-gray-200 text-xs font-light flex justify-end'
+            <motion.p
+              className='text-gray-500 dark:text-gray-200 text-xs font-light flex justify-end'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

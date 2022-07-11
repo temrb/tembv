@@ -53,13 +53,10 @@ const Item = ({
           </div>
           {discount ? (
             <div className='flex justify-end space-x-4 items-center'>
-              <div className='text-xs bg-red-200 text-red-800 ring-2 ring-red-800 p-1 rounded-lg'>
-                {discount}% Off 🔥
+              <div className='text-xs bg-red-200 text-red-800 py-1 px-2 rounded-lg'>
+                %{discount} Off 🔥
               </div>
-              <div className='text-lg font-bold italic text-red-600 dark:text-red-300 line-through'>
-                ${price}
-              </div>
-              <div className='text-lg font-bold text-orange-600 dark:text-orange-300'>
+              <div className='text-lg font-semibold text-orange-600 dark:text-orange-200'>
                 ${discountCalc(price || 0, discount)}
               </div>
             </div>

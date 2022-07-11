@@ -63,32 +63,39 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
               />
             </div>
             <div className='flex justify-end'>
-              <div className='grid content-between gap-4 mx-auto'>
-                <div className='cursor-pointer flex justify-end'>
-                  <Link href={`mailto:${user[0].contactEmail}`}>
-                    <MailIcon className='text-gray-400 h-7' />
-                  </Link>
-                </div>
+              <div className='flex space-x-2'>
                 <button
                   className={`
                     ${
                       share
                         ? `bg-green-200 ring-green-500 focus:ring-2 text-green-800 font-semibold`
                         : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
-                    }         ring-2 text-sm py-1 px-2 rounded-full`}
+                    }         ring-2 text-xs py-1 px-2 rounded-full`}
                   onClick={onShare}
                 >
-                  {share ? 'Copied' : 'Share'}
+                  {share ? 'URL Copied! ✅' : 'Copy URL! 🔗'}
                 </button>
+                <div className='cursor-pointer flex justify-end'>
+                  <Link href={`mailto:${user[0].contactEmail}`}>
+                    <MailIcon className='text-gray-400 h-7' />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-          <div className='space-y-4 max-w-xs'>
+          <div className='space-y-3 max-w-xs'>
             {/* heading */}
             <Heading
               title={` ${user[0].title}`}
               subTitle={` ${user[0].subTitle}`}
             />
+            <motion.p className='text-gray-500 dark:text-gray-200 text-xs font-light flex justify-end'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              ↔️ scroll ⤵️
+            </motion.p>
             {/* products */}
             {user[0].showProductsSection && (
               <motion.div
@@ -103,7 +110,6 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                 <Section
                   title={user[0].productsTitle}
                   borderColor='border-orange-400'
-                  scroll={true}
                 >
                   <div className='gap-1 items-center w-full'>
                     <div className='overflow-x-auto py-4 flex gap-2 items-center'>
@@ -119,6 +125,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                             key={product._id}
                             textColor='text-orange-700'
                             bgColor='bg-orange-200'
+                            borderColor='border-orange-300'
                             link={product.link}
                             linkText={product.name}
                             name={product.name}
@@ -146,7 +153,6 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                 <Section
                   title={user[0].linksTitle}
                   borderColor='border-blue-400'
-                  scroll={true}
                 >
                   <div className='gap-1 items-center w-full'>
                     <div className='overflow-x-auto py-4 flex gap-2 items-center'>

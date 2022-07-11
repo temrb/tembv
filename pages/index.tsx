@@ -89,14 +89,6 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
               title={` ${user[0].title}`}
               subTitle={` ${user[0].subTitle}`}
             />
-            <motion.p
-              className='text-gray-500 dark:text-gray-200 text-xs font-light flex justify-end'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              ↔️ scroll ⤵️
-            </motion.p>
             {/* products */}
             {user[0].showProductsSection && (
               <motion.div
@@ -137,8 +129,9 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                           />
                         ))}
                     </div>
-                    <div className='flex justify-center items-center dark:text-gray-200 text-xs'>
-                      {products.length} total product(s)
+                    <div className='flex justify-between items-center dark:text-gray-200 text-xs'>
+                      <p>{products.length} product(s)</p>
+                      {products.length > 1 && <p>↔️</p>}
                     </div>
                   </div>
                 </Section>
@@ -179,8 +172,9 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                           />
                         ))}
                     </div>
-                    <div className='flex justify-center items-center dark:text-gray-200 text-xs'>
-                      {links.length} total link(s)
+                    <div className='flex justify-between items-center dark:text-gray-200 text-xs'>
+                      <p>{links.length} link(s)</p>
+                      {links.length > 1 && <p>↔️</p>}
                     </div>
                   </div>
                 </Section>

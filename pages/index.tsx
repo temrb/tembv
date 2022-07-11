@@ -133,6 +133,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                             description={product.description}
                             price={product.price}
                             discount={product.discount || null}
+                            logo={product.logo}
                           />
                         ))}
                     </div>
@@ -282,6 +283,7 @@ export const getServerSideProps = async () => {
   _id,
   _createdAt,
   name,
+  logo,
   description,
   price,
   discount,

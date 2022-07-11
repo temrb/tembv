@@ -10,6 +10,7 @@ interface Props {
   description?: string;
   price?: number;
   discount?: number;
+  logo?: string;
 }
 
 const discountCalc = (price: number, discount: number) => {
@@ -26,6 +27,7 @@ const Item = ({
   description,
   price,
   discount,
+  logo,
 }: Props) => {
   return (
     <Link href={`${link}`}>
@@ -52,20 +54,27 @@ const Item = ({
             )}
           </div>
           {discount ? (
-            <div className='flex justify-end space-x-4 items-center'>
-              <div className='text-xs bg-red-200 text-red-800 py-1 px-2 rounded-lg'>
-                {discount}% Off 🔥
+            <div className='flex justify-evenly space-x-4 items-center'>
+              {logo && <div className='flex'>{logo}</div>}
+              <div className='text-xs bg-red-200 text-red-800 py-1 px-2 rounded-lg flex space-x-2'>
+                <div className='italic line-through text-red-600'>
+                  ${price}
+                </div>
+                <div>
+                  <span className='font-semibold'>{discount}% </span>
+                  Off 🔥
+                </div>
               </div>
-              <div className='text-lg font-semibold italic line-through text-red-600 dark:text-red-300'>
-                ${price}
-              </div>
-              <div className='text-lg font-bold text-orange-600 dark:text-orange-300'>
-                ${discountCalc(price || 0, discount)}
+              <div className='flex'>
+                <div className='text-lg font-bold text-orange-600 dark:text-orange-200'>
+                  ${discountCalc(price || 0, discount)}
+                </div>
               </div>
             </div>
           ) : (
             price && (
-              <div className='flex justify-end'>
+              <div className='flex justify-evenly space-x-4 items-center'>
+                {logo && <div className='flex'>{logo}</div>}
                 <div className='text-lg font-bold text-orange-600 dark:text-orange-300'>
                   ${price}
                 </div>

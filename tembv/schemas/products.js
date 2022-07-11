@@ -10,6 +10,11 @@ export default {
             validation: Rule => Rule.required(),
         },
         {
+            name: 'logo',
+            title: 'Product Logo (Text Emojis)',
+            type: 'string',
+        },
+        {
             name: 'description',
             title: 'Product Description',
             type: 'string',
@@ -17,7 +22,7 @@ export default {
         },
         {
             name: 'price',
-            title: 'Product Price',
+            title: 'Original Product Price',
             type: 'number',
             validation: Rule => Rule.required(),
         },

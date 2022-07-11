@@ -85,12 +85,6 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'showProductsSection',
-      title: 'Products Section',
-      type: 'boolean',
-      validation: Rule => Rule.required(),
-    },
-    {
       name: 'showFooterSection',
       title: 'Footer Text',
       type: 'boolean',

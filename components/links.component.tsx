@@ -12,6 +12,7 @@ interface Props {
   description?: string;
   price?: number;
   discount?: number;
+  logo?: string;
 }
 
 const Links = ({
@@ -24,6 +25,7 @@ const Links = ({
   description,
   price,
   discount,
+  logo,
 }: Props) => {
   return (
     <div
@@ -42,6 +44,7 @@ const Links = ({
         description={description}
         price={price}
         discount={discount}
+        logo={logo}
       />
     </div>
   );

@@ -57,10 +57,10 @@ const Item = ({
                 {discount}% Off 🔥
               </div>
               <div className='text-lg font-semibold italic line-through text-red-600 dark:text-red-300'>
-                ${discountCalc(price || 0, discount)}
+                ${price}
               </div>
               <div className='text-lg font-bold text-orange-600 dark:text-orange-300'>
-                ${price}
+                ${discountCalc(price || 0, discount)}
               </div>
             </div>
           ) : (

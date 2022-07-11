@@ -112,7 +112,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   title={user[0].productsTitle}
                   borderColor='border-orange-400'
                 >
-                  <div className='gap-1 items-center w-full'>
+                  <div className='grid items-center w-full'>
                     <div className='overflow-x-auto py-4 flex gap-2 items-center'>
                       {products
                         .sort((a: any, b: any) => {
@@ -137,6 +137,9 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                           />
                         ))}
                     </div>
+                    <div className='flex justify-center items-center dark:text-gray-200 text-xs'>
+                      {products.length} total product(s)
+                    </div>
                   </div>
                 </Section>
               </motion.div>
@@ -156,7 +159,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   title={user[0].linksTitle}
                   borderColor='border-blue-400'
                 >
-                  <div className='gap-1 items-center w-full'>
+                  <div className='gap-1 grid items-center w-full'>
                     <div className='overflow-x-auto py-4 flex gap-2 items-center'>
                       {links
                         .sort((a: any, b: any) => {
@@ -175,6 +178,9 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                             createdAt={link._createdAt}
                           />
                         ))}
+                    </div>
+                    <div className='flex justify-center items-center dark:text-gray-200 text-xs'>
+                      {links.length} total link(s)
                     </div>
                   </div>
                 </Section>

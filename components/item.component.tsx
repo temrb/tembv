@@ -56,14 +56,16 @@ const Item = ({
           {discount ? (
             <div className='flex justify-evenly space-x-4 items-center'>
               {logo && <div className='flex'>{logo}</div>}
-              <div className='text-xs bg-red-200 text-red-800 py-1 px-2 rounded-lg'>
-                <span className='font-semibold'>{discount}% </span>
-                Off 🔥
-              </div>
-              <div className='flex space-x-2'>
-                <div className='text-lg italic line-through text-red-600 dark:text-red-300'>
+              <div className='text-xs bg-red-200 text-red-800 py-1 px-2 rounded-lg flex space-x-2'>
+                <div className='italic line-through text-red-600 dark:text-red-300'>
                   ${price}
                 </div>
+                <div>
+                  <span className='font-semibold'>{discount}% </span>
+                  Off 🔥
+                </div>
+              </div>
+              <div className='flex'>
                 <div className='text-lg font-bold text-orange-600 dark:text-orange-300'>
                   ${discountCalc(price || 0, discount)}
                 </div>

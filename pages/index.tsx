@@ -137,7 +137,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                           />
                         ))}
                     </div>
-                    <div className='flex justify-center items-center text-xs'>
+                    <div className='flex justify-center items-center dark:text-gray-200 text-xs'>
                       {products.length} total product(s)
                     </div>
                   </div>
@@ -179,7 +179,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                           />
                         ))}
                     </div>
-                    <div className='flex justify-center items-center text-xs'>
+                    <div className='flex justify-center items-center dark:text-gray-200 text-xs'>
                       {links.length} total link(s)
                     </div>
                   </div>

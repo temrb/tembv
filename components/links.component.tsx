@@ -29,7 +29,7 @@ const Links = ({
     <div
       className={`
     {
-      ${borderColor ? `px-2 border-2 border-dashed ${borderColor} rounded-lg pt-1 pb-2` : 'px-1'}
+      ${borderColor ? `px-1 border-2 border-dashed ${borderColor} rounded-lg pt-1 pb-2` : 'px-1'}
     }
     `}
     >

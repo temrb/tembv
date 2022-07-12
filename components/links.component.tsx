@@ -29,14 +29,19 @@ const Links = ({
   discount,
   logo,
   coupon,
-  couponAmt
+  couponAmt,
 }: Props) => {
   return (
     <div
       className={`
     {
-      ${borderColor ? `px-1 border-2 border-dashed ${borderColor} rounded-lg pt-1 pb-2` : 'px-1'}
+      ${
+        borderColor
+          ? `px-1 border-2 border-dashed ${borderColor} rounded-lg pt-1 pb-2`
+          : 'px-1'
+      }
     }
+    drop-shadow-md
     `}
     >
       <Item

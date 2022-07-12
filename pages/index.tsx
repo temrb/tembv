@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -83,7 +83,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
               </div>
             </div>
           </div>
-          <div className='space-y-3 max-w-xs'>
+          <div className='space-y-3 max-w-xs lg:max-w-lg'>
             {/* heading */}
             <Heading
               title={` ${user[0].title}`}

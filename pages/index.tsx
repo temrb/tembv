@@ -166,9 +166,13 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                             key={link._id}
                             textColor='text-blue-700'
                             bgColor='bg-blue-200'
+                            borderColor='border-blue-300'
                             link={link.link}
                             linkText={link.linkText}
+                            description={link.description}
                             createdAt={link._createdAt}
+                            coupon={link.coupon}
+                            couponAmt={link.couponAmt}
                           />
                         ))}
                     </div>
@@ -278,6 +282,8 @@ export const getServerSideProps = async () => {
   _createdAt,
   link,
   linkText,
+  coupon,
+  couponAmt
 }`;
   const productsQuery = `*[_type =='products']{
   _id,

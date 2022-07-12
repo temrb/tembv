@@ -16,6 +16,16 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'coupon',
+      title: 'Coupon Code',
+      type: 'string',
+    },
+    {
+      name: 'couponAmt',
+      title: 'Coupon Amount',
+      type: 'string',
+    },
+    {
       name: 'createdAt',
       title: 'Created Date',
       type: 'datetime',

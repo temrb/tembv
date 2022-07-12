@@ -10,6 +10,8 @@ export interface LinksTypes {
   _createdAt: string;
   link: string;
   linkText: string;
+  coupon: string;
+  couponAmt: string;
 }
 
 export interface ProductsTypes{

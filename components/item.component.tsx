@@ -89,7 +89,7 @@ const Item = ({
           </div>
         )}
         {coupon && (
-          <div className='text-xs grid justify-center'>
+          <div className='text-xs grid justify-center dark:text-gray-200'>
             ↘️ {couponAmt} Off ↙️
             <div className='font-semibold flex justify-center'>"{coupon}"</div>
           </div>

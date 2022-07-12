@@ -13,6 +13,8 @@ interface Props {
   price?: number;
   discount?: number;
   logo?: string;
+  coupon?: string;
+  couponAmt?: string;
 }
 
 const Links = ({
@@ -26,6 +28,8 @@ const Links = ({
   price,
   discount,
   logo,
+  coupon,
+  couponAmt
 }: Props) => {
   return (
     <div
@@ -45,6 +49,8 @@ const Links = ({
         price={price}
         discount={discount}
         logo={logo}
+        coupon={coupon}
+        couponAmt={couponAmt}
       />
     </div>
   );

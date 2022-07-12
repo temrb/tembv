@@ -100,12 +100,12 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   delay: 0.2,
                 }}
               >
-                <Section
-                  title={user[0].productsTitle}
-                  borderColor='border-orange-400'
-                >
-                  <div className='grid items-center w-full'>
-                    <div className='overflow-x-auto py-4 flex gap-2 items-center'>
+                <h1 className='font-semibold text-xl pb-2 flex dark:text-gray-200'>
+                  {user[0].productsTitle}
+                </h1>
+                <Section borderColor='border-orange-400'>
+                  <div className='grid items-center space-y-2 w-full'>
+                    <div className='overflow-x-auto flex gap-2 items-center'>
                       {products
                         .sort((a: any, b: any) => {
                           return (
@@ -148,12 +148,12 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   delay: 0.5,
                 }}
               >
-                <Section
-                  title={user[0].linksTitle}
-                  borderColor='border-blue-400'
-                >
-                  <div className='gap-1 grid items-center w-full'>
-                    <div className='overflow-x-auto py-4 flex gap-2 items-center'>
+                <h1 className='font-semibold text-xl pb-2 flex dark:text-gray-200'>
+                  {user[0].linksTitle}
+                </h1>
+                <Section borderColor='border-blue-400'>
+                  <div className='gap-1 grid items-center space-y-2 w-full'>
+                    <div className='overflow-x-auto flex gap-2 items-center'>
                       {links
                         .sort((a: any, b: any) => {
                           return (
@@ -195,12 +195,12 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   delay: 0.8,
                 }}
               >
-                <Section
-                  title={user[0].socialsTitle}
-                  borderColor='border-violet-400'
-                >
-                  <div className='gap-1 items-center w-full'>
-                    <div className='overflow-x-auto py-4 flex gap-2 items-center'>
+                <h1 className='font-semibold text-xl flex dark:text-gray-200'>
+                  {user[0].socialsTitle}
+                </h1>
+                <Section>
+                  <div className='gap-1 items-center space-y-2 w-full'>
+                    <div className='overflow-x-auto flex gap-2 items-center'>
                       {socials.map((social: any) => (
                         <Socials
                           key={social._id}
@@ -217,13 +217,16 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
             )}
             {/* footer */}
             <motion.div
-              className={`flex ${
-                user[0].darkMode ? 'justify-between' : 'justify-end'
-              } items-center`}
+              className='flex justify-end space-x-2 items-center'
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: 'easeInOut', delay: 1.5 }}
             >
+              {user[0].showFooterSection && (
+                <div className='text-xs font-light flex justify-end dark:text-gray-200'>
+                  {user[0].footer}
+                </div>
+              )}
               {user[0].darkMode && (
                 <div className='flex'>
                   {lightMode ? (
@@ -243,12 +246,6 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                       <MoonIcon className='text-gray-500 h-5' />
                     </button>
                   )}
-                </div>
-              )}
-
-              {user[0].showFooterSection && (
-                <div className='text-xs font-light flex justify-end dark:text-gray-200'>
-                  {user[0].footer}
                 </div>
               )}
             </motion.div>

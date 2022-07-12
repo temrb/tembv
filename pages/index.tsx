@@ -103,7 +103,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                 <h1 className='font-semibold text-xl pb-2 flex dark:text-gray-200'>
                   {user[0].productsTitle}
                 </h1>
-                <Section borderColor='border-orange-400'>
+                <Section borderColor='border-orange-400 shadow-lg'>
                   <div className='grid items-center space-y-2 w-full'>
                     <div className='overflow-x-auto flex gap-2 items-center'>
                       {products
@@ -151,8 +151,8 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                 <h1 className='font-semibold text-xl pb-2 flex dark:text-gray-200'>
                   {user[0].linksTitle}
                 </h1>
-                <Section borderColor='border-blue-400'>
-                  <div className='gap-1 grid items-center space-y-2 w-full'>
+                <Section borderColor='border-blue-400 shadow-lg'>
+                  <div className='gap-1 grid items-center space-y-2 w-full '>
                     <div className='overflow-x-auto flex gap-2 items-center'>
                       {links
                         .sort((a: any, b: any) => {

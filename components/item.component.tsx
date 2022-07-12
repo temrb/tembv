@@ -33,7 +33,6 @@ const Item = ({
   coupon,
   couponAmt,
 }: Props) => {
-  console.log('🚀 ~ file: item.component.tsx ~ line 34 ~ coupon', coupon);
   return (
     <Link href={`${link}`}>
       <div className='space-y-1 cursor-pointer'>

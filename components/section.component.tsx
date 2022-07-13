@@ -2,10 +2,10 @@ import React from 'react';
 
 interface Props {
   children: React.ReactNode;
-  borderColor?: string;
+  bgColor?: string;
 }
 
-const Section = ({ children, borderColor }: Props) => {
+const Section = ({ children, bgColor: borderColor }: Props) => {
   return (
     <div
       className={`${

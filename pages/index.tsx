@@ -6,11 +6,8 @@ import Link from 'next/link';
 import Section from '../components/section.component';
 import Links from '../components/links.component';
 import Socials from '../components/socials.component';
-import Heading from '../components/heading.component';
 import { motion } from 'framer-motion';
-import { MoonIcon, SunIcon, MailIcon } from '@heroicons/react/solid';
-import { useAppSelector, useAppDispatch } from '../hooks/useRedux';
-import { setLightMode } from '../redux/fetaures/utilsSlice';
+import { MailIcon } from '@heroicons/react/solid';
 import { SocialsTypes, LinksTypes, UserTypes, ProductsTypes } from '../types';
 import { sanityClient, urlFor } from '../sanity';
 
@@ -27,8 +24,6 @@ interface Props {
 
 const Home: NextPage<Props> = ({ socials, links, user, products }) => {
   const [share, setShare] = useState(false);
-  const lightMode = useAppSelector((state: RootState) => state.utils.lightMode);
-
   const onShare = () => {
     const clipboard = navigator.clipboard.writeText(window.location.href);
     clipboard
@@ -62,33 +57,59 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                 className=' items-center flex rounded-lg'
               />
             </div>
-            <div className='flex justify-end'>
-              <div className='flex space-x-2'>
-                <button
-                  className={`
+            {/* socials */}
+            {user[0].showSocialSection && (
+              <motion.div
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: 'easeInOut',
+                  delay: 0.8,
+                }}
+              >
+                <Section>
+                  <div className='gap-1 items-center w-full'>
+                    <div className='overflow-x-auto flex gap-2 items-center'>
+                      {socials.map((social: any) => (
+                        <Socials
+                          key={social._id}
+                          link={social.link}
+                          linkText={social.linkText}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </Section>
+              </motion.div>
+            )}
+          </div>
+
+          <div className='flex items-center justify-between'>
+            <div className='font-light text-sm flex dark:text-gray-200'>
+              {/* heading */}
+              {user[0].title}
+            </div>
+            <div className='flex space-x-2'>
+              <button
+                className={`
                     ${
                       share
-                        ? `bg-green-200 ring-green-500 focus:ring-2 text-green-800 font-semibold`
-                        : `bg-blue-100 font-semibold text-gray-500 dark:text-gray-600`
-                    }         ring-2 text-xs py-1 px-2 rounded-full`}
-                  onClick={onShare}
-                >
-                  {share ? 'URL Copied! ✅' : 'Copy URL! 🔗'}
-                </button>
-                <div className='cursor-pointer flex justify-end'>
-                  <Link href={`mailto:${user[0].contactEmail}`}>
-                    <MailIcon className='text-gray-400 h-7' />
-                  </Link>
-                </div>
+                        ? ` text-green-800 font-semibold`
+                        : ` text-gray-500 dark:text-gray-600`
+                    }         text-xs py-1 px-2 rounded-full`}
+                onClick={onShare}
+              >
+                {share ? 'URL Copied! ✅' : 'Copy URL! 🔗'}
+              </button>
+              <div className='cursor-pointer flex justify-end'>
+                <Link href={`mailto:${user[0].contactEmail}`}>
+                  <MailIcon className='text-gray-400 h-6' />
+                </Link>
               </div>
             </div>
           </div>
           <div className='space-y-3 max-w-xs lg:max-w-lg'>
-            {/* heading */}
-            <Heading
-              title={` ${user[0].title}`}
-              subTitle={` ${user[0].subTitle}`}
-            />
             {/* products */}
             {user[0].showProductsSection && (
               <motion.div
@@ -100,10 +121,10 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   delay: 0.2,
                 }}
               >
-                <h1 className='font-semibold text-xl pb-2 flex dark:text-gray-200'>
+                <h1 className='font-semibold text-xl pb-2 flex justify-end dark:text-gray-200'>
                   {user[0].productsTitle}
                 </h1>
-                <Section borderColor='border-orange-400 shadow-lg'>
+                <Section bgColor='bg-slate-200 shadow-lg'>
                   <div className='grid items-center space-y-2 w-full'>
                     <div className='overflow-x-auto flex gap-2 items-center'>
                       {products
@@ -116,9 +137,6 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                         ?.map((product: any) => (
                           <Links
                             key={product._id}
-                            textColor='text-orange-700'
-                            bgColor='bg-orange-200'
-                            borderColor='border-orange-300'
                             link={product.link}
                             linkText={product.name}
                             name={product.name}
@@ -148,10 +166,10 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   delay: 0.5,
                 }}
               >
-                <h1 className='font-semibold text-xl pb-2 flex dark:text-gray-200'>
+                <h1 className='font-semibold text-xl pb-2 pt-2 flex justify-end dark:text-gray-200'>
                   {user[0].linksTitle}
                 </h1>
-                <Section borderColor='border-blue-400 shadow-lg'>
+                <Section bgColor='bg-slate-200 shadow-lg'>
                   <div className='gap-1 grid items-center space-y-2 w-full '>
                     <div className='overflow-x-auto flex gap-2 items-center'>
                       {links
@@ -164,9 +182,6 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                         ?.map((link: any) => (
                           <Links
                             key={link._id}
-                            textColor='text-blue-700'
-                            bgColor='bg-blue-200'
-                            borderColor='border-blue-300'
                             link={link.link}
                             linkText={link.linkText}
                             description={link.description}
@@ -184,71 +199,6 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                 </Section>
               </motion.div>
             )}
-            {/* socials */}
-            {user[0].showSocialSection && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  ease: 'easeInOut',
-                  delay: 0.8,
-                }}
-              >
-                <h1 className='font-semibold text-xl flex dark:text-gray-200'>
-                  {user[0].socialsTitle}
-                </h1>
-                <Section>
-                  <div className='gap-1 items-center space-y-2 w-full'>
-                    <div className='overflow-x-auto flex gap-2 items-center'>
-                      {socials.map((social: any) => (
-                        <Socials
-                          key={social._id}
-                          textColor='text-violet-700'
-                          bgColor='bg-violet-200'
-                          link={social.link}
-                          linkText={social.linkText}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </Section>
-              </motion.div>
-            )}
-            {/* footer */}
-            <motion.div
-              className='flex justify-end space-x-2 items-center'
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: 'easeInOut', delay: 1.5 }}
-            >
-              {user[0].showFooterSection && (
-                <div className='text-xs font-light flex justify-end dark:text-gray-200'>
-                  {user[0].footer}
-                </div>
-              )}
-              {user[0].darkMode && (
-                <div className='flex'>
-                  {lightMode ? (
-                    <button
-                      onClick={() => {
-                        useAppDispatch(setLightMode(false));
-                      }}
-                    >
-                      <SunIcon className='text-yellow-500 h-5' />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        useAppDispatch(setLightMode(true));
-                      }}
-                    >
-                      <MoonIcon className='text-gray-500 h-5' />
-                    </button>
-                  )}
-                </div>
-              )}
-            </motion.div>
           </div>
         </div>
       </main>
@@ -263,13 +213,9 @@ export const getServerSideProps = async () => {
   name,
   contactEmail,
   title,
-  subTitle,
   socialsTitle,
   linksTitle,
   productsTitle,
-  footer,
-  darkMode,
-  showFooterSection,
   showSocialSection,
   showLinksSection,
   showProductsSection,

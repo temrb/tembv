@@ -31,12 +31,6 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'subTitle',
-      title: 'Sub Title',
-      type: 'string',
-      validation: Rule => Rule.required(),
-    },
-    {
       name: 'socialsTitle',
       title: 'Socials Title',
       type: 'string',
@@ -55,12 +49,6 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'footer',
-      title: 'Footer',
-      type: 'string',
-      validation: Rule => Rule.required(),
-    },
-    {
       name: 'showProductsSection',
       title: 'Products Section',
       type: 'boolean',
@@ -75,18 +63,6 @@ export default {
     {
       name: 'showSocialSection',
       title: 'Social Section',
-      type: 'boolean',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'darkMode',
-      title: 'Dark Mode',
-      type: 'boolean',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'showFooterSection',
-      title: 'Footer Text',
       type: 'boolean',
       validation: Rule => Rule.required(),
     },

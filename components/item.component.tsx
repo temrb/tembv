@@ -2,10 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 interface Props {
-  textColor: string;
   link: string;
   linkText: string;
-  bgColor: string;
   createdAt?: string;
   description?: string;
   price?: number;
@@ -21,10 +19,8 @@ const discountCalc = (price: number, discount: number) => {
 };
 
 const Item = ({
-  textColor,
   link,
   linkText,
-  bgColor,
   createdAt,
   description,
   price,
@@ -37,18 +33,18 @@ const Item = ({
     <Link href={`${link}`}>
       <div className='space-y-1 cursor-pointer'>
         <div
-          className={`flex text-sm justify-center ${textColor} py-1 px-2 truncate ... rounded-lg ${bgColor} font-semibold cursor-pointer`}
+          className={`flex text-sm justify-center py-1 px-2 truncate ... rounded-lg font-semibold cursor-pointer`}
         >
           {linkText}
         </div>
-        <div className='text-xs flex justify-center font-extralight dark:text-gray-200'>
+        {/* <div className='text-xs flex justify-center font-extralight dark:text-gray-200'>
           {createdAt &&
             new Date(createdAt).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'numeric',
               day: 'numeric',
             })}
-        </div>
+        </div> */}
         {description && (
           <div className='grid justify-end space-y-1'>
             <>

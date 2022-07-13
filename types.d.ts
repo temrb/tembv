@@ -30,13 +30,9 @@ export interface UserTypes {
   name: string;
   contactEmail: string;
   title: string;
-  subTitle: string;
   socialsTitle: string;
   linksTitle: string;
   productsTitle: string;
-  footer: string;
-  darkMode: boolean;
-  showFooterSection: boolean;
   showSocialSection: boolean;
   showLinksSection: boolean;
   showProductsSection: boolean;

@@ -41,7 +41,7 @@ const Links = ({
           : 'px-1'
       }
     }
-    drop-shadow-md
+    drop-shadow-sm
     `}
     >
       <Item

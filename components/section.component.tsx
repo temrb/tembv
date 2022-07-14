@@ -5,13 +5,9 @@ interface Props {
   bgColor?: string;
 }
 
-const Section = ({ children, bgColor: borderColor }: Props) => {
+const Section = ({ children, bgColor }: Props) => {
   return (
-    <div
-      className={`${
-        borderColor ? `${borderColor} border-2` : ''
-      } p-3 rounded-lg`}
-    >
+    <div className={`${bgColor} p-3 rounded-lg`}>
       <div className='flex justify-between items-center'></div>
       {children}
     </div>

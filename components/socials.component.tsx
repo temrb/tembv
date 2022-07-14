@@ -8,7 +8,7 @@ interface Props {
 
 const Socials = ({ link, linkText }: Props) => {
   return (
-    <div className='px-1 bg-slate-200 rounded-lg !text-sm'>
+    <div className='px-1 bg-slate-200 rounded-lg'>
       <Item link={link} linkText={linkText} />
     </div>
   );

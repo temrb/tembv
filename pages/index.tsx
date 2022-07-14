@@ -60,8 +60,8 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
             {/* socials */}
             {user[0].showSocialSection && (
               <motion.div
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{
                   duration: 0.5,
                   ease: 'easeInOut',
@@ -121,7 +121,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   delay: 0.2,
                 }}
               >
-                <h1 className='font-semibold text-xl pb-2 flex justify-end dark:text-gray-200'>
+                <h1 className='font-semibold text-xl pb-2 pt-4 flex justify-end dark:text-gray-200'>
                   {user[0].productsTitle}
                 </h1>
                 <Section bgColor='bg-slate-200 shadow-lg'>
@@ -166,7 +166,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   delay: 0.5,
                 }}
               >
-                <h1 className='font-semibold text-xl pb-2 pt-2 flex justify-end dark:text-gray-200'>
+                <h1 className='font-semibold text-xl pb-2 pt-4 flex justify-end dark:text-gray-200'>
                   {user[0].linksTitle}
                 </h1>
                 <Section bgColor='bg-slate-200 shadow-lg'>

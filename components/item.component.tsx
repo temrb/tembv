@@ -18,24 +18,14 @@ const discountCalc = (price: number, discount: number) => {
   return discountPrice;
 };
 
-const Item = ({
-  link,
-  linkText,
-  createdAt,
-  description,
-  price,
-  discount,
-  logo,
-  coupon,
-  couponAmt,
-}: Props) => {
+const Item = (Props: Props) => {
   return (
-    <Link href={`${link}`}>
+    <Link href={`${Props.link}`}>
       <div className='space-y-1 cursor-pointer'>
         <div
           className={`flex text-sm justify-center py-1 px-2 truncate ... rounded-lg font-semibold cursor-pointer`}
         >
-          {linkText}
+          {Props.linkText}
         </div>
         {/* <div className='text-xs flex justify-center font-extralight dark:text-gray-200'>
           {createdAt &&
@@ -45,49 +35,51 @@ const Item = ({
               day: 'numeric',
             })}
         </div> */}
-        {description && (
+        {Props.description && (
           <div className='grid justify-end space-y-1'>
             <>
-              {description && (
-                <div className='text-xs font-extralight dark:text-gray-200 justify-end flex'>
-                  {description}
+              {Props.description && (
+                <div className='text-xs font-extralight justify-end flex'>
+                  {Props.description}
                 </div>
               )}
             </>
-            {discount ? (
+            {Props.discount ? (
               <div className='flex justify-evenly space-x-4 items-center'>
-                {logo && <div className='flex'>{logo}</div>}
+                {Props.logo && <div className='flex'>{Props.logo}</div>}
                 <div className='text-xs bg-red-200 text-red-800 py-1 px-2 rounded-lg flex space-x-2'>
                   <div className='italic line-through text-red-600'>
-                    ${price}
+                    ${Props.price}
                   </div>
                   <div>
-                    <span className='font-semibold'>{discount}% </span>
+                    <span className='font-semibold'>{Props.discount}% </span>
                     Off 🔥
                   </div>
                 </div>
                 <div className='flex'>
-                  <div className='text-lg font-bold text-orange-600 dark:text-orange-200'>
-                    ${discountCalc(price || 0, discount)}
+                  <div className='text-lg font-bold text-orange-600'>
+                    ${discountCalc(Props.price || 0, Props.discount)}
                   </div>
                 </div>
               </div>
             ) : (
-              price && (
+              Props.price && (
                 <div className='flex justify-evenly space-x-4 items-center'>
-                  {logo && <div className='flex'>{logo}</div>}
-                  <div className='text-lg font-bold text-orange-600 dark:text-orange-300'>
-                    ${price}
+                  {Props.logo && <div className='flex'>{Props.logo}</div>}
+                  <div className='text-lg font-bold text-orange-600'>
+                    ${Props.price}
                   </div>
                 </div>
               )
             )}
           </div>
         )}
-        {coupon && (
-          <div className='text-xs grid justify-center dark:text-gray-200'>
-            ↘️ {couponAmt} Off ↙️
-            <div className='font-semibold flex justify-center'>"{coupon}"</div>
+        {Props.coupon && (
+          <div className='text-xs grid justify-center'>
+            ↘️ {Props.couponAmt} Off ↙️
+            <div className='font-semibold flex justify-center'>
+              "{Props.coupon}"
+            </div>
           </div>
         )}
       </div>

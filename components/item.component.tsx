@@ -39,7 +39,7 @@ const Item = (Props: Props) => {
           <div className='grid justify-end space-y-1'>
             <>
               {Props.description && (
-                <div className='text-xs font-extralight justify-end flex'>
+                <div className='text-xs font-extralight justify-center flex'>
                   {Props.description}
                 </div>
               )}

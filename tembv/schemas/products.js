@@ -24,7 +24,6 @@ export default {
             name: 'price',
             title: 'Original Product Price',
             type: 'number',
-            validation: Rule => Rule.required(),
         },
         {
             name: 'discount',

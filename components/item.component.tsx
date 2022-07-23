@@ -62,15 +62,18 @@ const Item = (Props: Props) => {
                   </div>
                 </div>
               </div>
-            ) : (
-              Props.price && (
-                <div className='flex justify-evenly space-x-4 items-center'>
-                  {Props.logo && <div className='flex'>{Props.logo}</div>}
-                  <div className='text-lg font-bold text-orange-600'>
-                    ${Props.price}
-                  </div>
+            ) : Props.price ? (
+              <div className='flex justify-evenly space-x-4 items-center'>
+                {Props.logo && <div className='flex'>{Props.logo}</div>}
+                <div className='text-lg font-bold text-orange-600'>
+                  ${Props.price}
                 </div>
-              )
+              </div>
+            ) : (
+              <div className='flex justify-evenly space-x-4 items-center'>
+                {Props.logo && <div className='flex'>{Props.logo}</div>}
+                <div className='text font-bold text-green-600'>Free 💸</div>
+              </div>
             )}
           </div>
         )}

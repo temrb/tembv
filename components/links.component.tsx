@@ -14,29 +14,19 @@ interface Props {
   couponAmt?: string;
 }
 
-const Links = ({
-  link,
-  linkText,
-  createdAt,
-  description,
-  price,
-  discount,
-  logo,
-  coupon,
-  couponAmt,
-}: Props) => {
+const Links = (Props: Props) => {
   return (
     <div className=' px-1 rounded-lg pt-1 pb-2 bg-white'>
       <Item
-        link={link}
-        linkText={linkText}
-        createdAt={createdAt}
-        description={description}
-        price={price}
-        discount={discount}
-        logo={logo}
-        coupon={coupon}
-        couponAmt={couponAmt}
+        link={Props.link}
+        linkText={Props.linkText}
+        createdAt={Props.createdAt}
+        description={Props.description}
+        price={Props.price}
+        discount={Props.discount}
+        logo={Props.logo}
+        coupon={Props.coupon}
+        couponAmt={Props.couponAmt}
       />
     </div>
   );

@@ -38,7 +38,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
   };
 
   return (
-    <div className='flex py-8 min-h-screen overflow-auto flex-col dark:bg-slate-800 bg-white items-center justify-center'>
+    <div className='flex py-8 min-h-screen overflow-auto flex-col bg-white items-center justify-center'>
       <Head>
         <title>{user[0].name}</title>
         <link rel='icon' href='/favicon.ico' />
@@ -70,7 +70,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
               >
                 <Section>
                   <div className='gap-1 items-center w-full'>
-                    <div className='overflow-x-auto flex gap-2 items-center'>
+                    <div className='overflow-x-auto grid grid-cols-2 gap-2 items-center'>
                       {socials.map((social: any) => (
                         <Socials
                           key={social._id}
@@ -86,7 +86,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
           </div>
 
           <div className='flex items-center justify-between'>
-            <div className='font-light text-sm flex dark:text-gray-200'>
+            <div className='font-light text-sm flex'>
               {/* heading */}
               {user[0].title}
             </div>
@@ -96,8 +96,8 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                     ${
                       share
                         ? ` text-green-800 font-semibold`
-                        : ` text-gray-500 dark:text-gray-600`
-                    }         text-xs py-1 px-2 rounded-full`}
+                        : ` text-gray-500`
+                    }         text-xs py-1 px-2`}
                 onClick={onShare}
               >
                 {share ? 'URL Copied! ✅' : 'Copy URL! 🔗'}
@@ -121,7 +121,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   delay: 0.2,
                 }}
               >
-                <h1 className='font-semibold text-xl pb-2 pt-4 flex justify-end dark:text-gray-200'>
+                <h1 className='font-semibold text-xl pb-2 pt-4 flex justify-end'>
                   {user[0].productsTitle}
                 </h1>
                 <Section bgColor='bg-slate-200 shadow-lg'>
@@ -147,7 +147,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                           />
                         ))}
                     </div>
-                    <div className='flex justify-between items-center dark:text-gray-200 text-xs'>
+                    <div className='flex justify-between items-center text-xs'>
                       <p>{products.length} product(s)</p>
                       {products.length > 1 && <p>↔️</p>}
                     </div>
@@ -166,7 +166,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                   delay: 0.5,
                 }}
               >
-                <h1 className='font-semibold text-xl pb-2 pt-4 flex justify-end dark:text-gray-200'>
+                <h1 className='font-semibold text-xl pb-2 pt-4 flex justify-end'>
                   {user[0].linksTitle}
                 </h1>
                 <Section bgColor='bg-slate-200 shadow-lg'>
@@ -191,7 +191,7 @@ const Home: NextPage<Props> = ({ socials, links, user, products }) => {
                           />
                         ))}
                     </div>
-                    <div className='flex justify-between items-center dark:text-gray-200 text-xs'>
+                    <div className='flex justify-between items-center text-xs'>
                       <p>{links.length} link(s)</p>
                       {links.length > 1 && <p>↔️</p>}
                     </div>
